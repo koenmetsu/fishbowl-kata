@@ -24,7 +24,11 @@ class Rover {
     }
 
     backward() {
-        this._position.y -= 1
+        if(this._position.y === 0) {
+            this._position.y = 10
+        } else {
+            this._position.y -= 1 
+        }
     }
 }
 
@@ -43,5 +47,11 @@ describe("rover starting position", () => {
         const rover = new Rover({x: 0, y: 1});
         rover.execute("b");
         expect(rover.position()).toEqual({x: 0, y: 0});
+    });
+
+    it("should move to 0, 10 when command b is received on position 0,0", () => {
+        const rover = new Rover();
+        rover.execute("b");
+        expect(rover.position()).toEqual({x: 0, y: 10});
     });
 });
