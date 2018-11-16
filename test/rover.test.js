@@ -1,9 +1,7 @@
 class Rover {
-    constructor(){
-        this._position = {
-            x: 0,
-            y: 0
-        }
+    constructor(position = {x: 0, y:0}){
+
+        this._position = position;
     }
 
     position() {
@@ -15,11 +13,18 @@ class Rover {
             case "f":
                 this.forward()
                 break;
+            case "b":
+                this.backward()
+                break;
         }
     }
 
     forward() {
         this._position.y += 1
+    }
+
+    backward() {
+        this._position.y -= 1
     }
 }
 
@@ -32,5 +37,11 @@ describe("rover starting position", () => {
         const rover = new Rover();
         rover.execute("f");
         expect(rover.position()).toEqual({x: 0, y: 1});
+    });
+
+    it("should move to 0, 0 when command b is received on position 0,1", () => {
+        const rover = new Rover({x: 0, y: 1});
+        rover.execute("b");
+        expect(rover.position()).toEqual({x: 0, y: 0});
     });
 });
