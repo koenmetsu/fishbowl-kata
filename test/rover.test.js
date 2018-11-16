@@ -1,16 +1,21 @@
 const worldsize = 10;
+const NORTH = "N";
 
 class Rover {
     constructor(position = {
         x: 0,
         y: 0
-    }) {
-
+    }, direction = NORTH) {
+        this._direction = direction;
         this._position = position;
     }
 
     position() {
         return this._position;
+    }
+
+    direction() {
+        return this._direction;
     }
 
     execute(command) {
@@ -41,13 +46,17 @@ class Rover {
     }
 }
 
-describe("rover starting position", () => {
+describe("initializing a rover", () => {
     it("should have 0, 0 as starting position", () => {
         expect(new Rover().position()).toEqual({
             x: 0,
             y: 0
         });
     });
+    it("should be facing N", () => {
+        expect(new Rover().direction()).toEqual(NORTH);
+    })
+
 });
 
 describe("rover forwards and backwards", () => {
@@ -97,6 +106,14 @@ describe("rover forwards and backwards", () => {
 
 describe("rover turning", () => {
     it("should stay on the same position when turning right", () => {
+        const rover = new Rover();
+        rover.execute("r");
+        expect(rover.position()).toEqual({
+            x: 0,
+            y: 0
+        });
+    });
+    xit("should be on position  same position when turning right", () => {
         const rover = new Rover();
         rover.execute("r");
         expect(rover.position()).toEqual({
