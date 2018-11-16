@@ -1,3 +1,5 @@
+const worldsize = 10;
+
 class Rover {
     constructor(position = {
         x: 0,
@@ -23,7 +25,7 @@ class Rover {
     }
 
     forward() {
-        if (this._position.y === 10) {
+        if (this._position.y === worldsize) {
             this._position.y = 0;
         } else {
             this._position.y += 1;
@@ -32,7 +34,7 @@ class Rover {
 
     backward() {
         if (this._position.y === 0) {
-            this._position.y = 10
+            this._position.y = worldsize
         } else {
             this._position.y -= 1
         }
