@@ -59,7 +59,7 @@ describe("initializing a rover", () => {
 
 });
 
-describe("rover forwards and backwards", () => {
+describe("when the rover moves forwards and backwards", () => {
 
     it("should move to 0, 1 when command f is received", () => {
         const rover = new Rover();
@@ -104,8 +104,8 @@ describe("rover forwards and backwards", () => {
     });
 });
 
-describe("rover turning", () => {
-    it("should stay on the same position when turning right", () => {
+describe("when rover is rotating right", () => {
+    it("should stay on the same position", () => {
         const rover = new Rover();
         rover.execute("r");
         expect(rover.position()).toEqual({
@@ -113,7 +113,7 @@ describe("rover turning", () => {
             y: 0
         });
     });
-    xit("should be on position  same position when turning right", () => {
+    it("should be oriented East", () => {
         const rover = new Rover();
         rover.execute("r");
         expect(rover.position()).toEqual({
