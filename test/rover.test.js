@@ -48,6 +48,9 @@ describe("rover starting position", () => {
             y: 0
         });
     });
+});
+
+describe("rover forwards and backwards", () => {
 
     it("should move to 0, 1 when command f is received", () => {
         const rover = new Rover();
@@ -85,6 +88,17 @@ describe("rover starting position", () => {
             y: 10
         });
         rover.execute("f");
+        expect(rover.position()).toEqual({
+            x: 0,
+            y: 0
+        });
+    });
+});
+
+describe("rover turning", () => {
+    it("should stay on the same position when turning right", () => {
+        const rover = new Rover();
+        rover.execute("r");
         expect(rover.position()).toEqual({
             x: 0,
             y: 0
